@@ -1,0 +1,11 @@
+page {
+	includeCSS {
+		extcustomcss = EXT:t3element/Resources/Public/css/custom.css
+	}
+	includeJS {
+		extcustomhjs = EXT:t3element/Resources/Public/js/customheaderjs.js
+	}
+	includeJSFooter {
+		extcustomfjs = EXT:t3element/Resources/Public/js/customfooterjs.js
+	}
+}
