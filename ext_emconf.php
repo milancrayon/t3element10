@@ -10,16 +10,16 @@ $EM_CONF[$_EXTKEY] = [
     'state' => 'stable',
     'clearCacheOnLoad' => 0,
     'version' => '1.0.0',
-    'constraints' => [
-        'depends' => [
-            'typo3' => '^10.4',
-        ],
-        'conflicts' => [],
-        'suggests' => [],
-    ],
-    'autoload' => [
-        'psr-4' => [
+    'constraints' => array(
+        'depends' => array(
+            'typo3' => '10.4.0-10.4.12',
+        ),
+        'conflicts' => array(),
+        'suggests' => array(), 
+    ),
+    'autoload' => array(
+        'psr-4' => array(
             "Crayon\\T3element\\" => "Classes",
-        ],
-    ],
+        ),
+    ),
 ];
