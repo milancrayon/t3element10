@@ -16,13 +16,6 @@ class Ce extends \Nng\Nnrestapi\Api\AbstractApi
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $elementsRepository = null;
-    /**
-     * ThemeconfigRepository
-     *
-     * @var \Crayon\T3element\Domain\Repository\ThemeconfigRepository
-     * @TYPO3\CMS\Extbase\Annotation\Inject
-     */
-    protected $ThemeconfigRepository = null;
 
     /**
      * @Api\Route("POST /ce/elementdb")
@@ -205,6 +198,13 @@ class Ce extends \Nng\Nnrestapi\Api\AbstractApi
                                         }
                                     }
                                 }
+                                if($value['exp'] == "notlike"){
+                                    if(sizeof($value['fields'])) {
+                                        foreach ($value['fields'] as $ssey => $value__) {
+                                            $_where[] = $queryBuilder->expr()->notLike($value__, $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($value['value']) . '%'));
+                                        }
+                                    }
+                                }
                             }
                             $queryBuilder->where(...$_where);
                         }
@@ -225,6 +225,13 @@ class Ce extends \Nng\Nnrestapi\Api\AbstractApi
                                         }
                                     }
                                 }
+                                if($value['exp'] == "notlike"){
+                                    if(sizeof($value['fields'])) {
+                                        foreach ($value['fields'] as $ssey => $value__) {
+                                            $_orWhere[] = $queryBuilder->expr()->notLike($value__, $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($value['value']) . '%'));
+                                        }
+                                    }
+                                }
                             }
                             $queryBuilder->orWhere(...$_orWhere);
                         }
@@ -242,7 +249,7 @@ class Ce extends \Nng\Nnrestapi\Api\AbstractApi
                 return ['error'=>$e];
             }
         } 
-        return['error'=> 'Invalid Request!!'];       
+        return['error'=> 'Invalid Request!!'];   
     }
     /**
      * @Api\Route("POST /ce/store")
